@@ -9,6 +9,12 @@ body {
   background-color: rgb(246, 246, 246);
 }
 
+/* essa parte é só pra pra testar o funcionamento dos itens */
+.detail-name {
+  margin: auto;
+  margin-right: 30px;
+}
+
 .header {
   position: relative;
   background-color: rgb(20, 116, 79);
@@ -20,6 +26,20 @@ body {
   height: 80px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 25px;
+}
+
+.navegator {
+  position: relative;
+  padding: 10px;
+}
+
+.image {
+  width: 30%;
+  margin: 10px;
+}
+
+.item-details {
+  padding: 10px;
 }
 
 .wellcome {
