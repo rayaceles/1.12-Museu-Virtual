@@ -9,6 +9,12 @@ body {
   background-color: rgb(246, 246, 246);
 }
 
+/* essa parte é só pra pra testar o funcionamento dos itens */
+.detail-name {
+  margin: auto;
+  margin-right: 30px;
+}
+
 .header {
   position: relative;
   background-color: rgb(20, 116, 79);
