@@ -14,15 +14,19 @@ body {
   background-color: rgb(20, 116, 79);
   color: antiquewhite;
   display: flex;
+  padding: 10px;
   align-items: center;
   width: 100%;
-  height: 60px;
+  height: 80px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
 }
 
 .wellcome {
   position: relative;
   display: flex;
   align-items: center;
+  padding-left: 10px;
   width: 100%;
   height: 60px;
 }
@@ -31,4 +35,5 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+  padding-left: 10px;
 }
