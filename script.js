@@ -40,14 +40,26 @@ function createItemSection(dataObj) {
   return container
 }
 
+function creatorFilter(dcCreator){
+  const creator = (dcCreator !== undefined) ? dcCreator[0] : 'null'
+  const regex = /^(https{0,1}:\/\/)/
+  if(regex.test(creator)){
+    const result = creator.split('/')
+    console.log(result)
+    return result[result.length -1]
+  }
+  return creator
+}
+
 function getItemDetailList(item) {
+  const notFoundImg = 'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png'
   const detail = {
     title: item.title[0].substring(0, 40),
-    country: item.country[0],
     institution: (item.dataProvider !== undefined) ? item.dataProvider[0] : '',
     description: (item.dcDescription !== undefined) ? item.dcDescription[0].substring(0, 80) : '',
-    creator: (item.dcCreator !== undefined) ? item.dcCreator[0] : '',
-    img: item.edmPreview[0],
+    country: (item.country !== undefined) ? item.country[0] : '',
+    creator: creatorFilter(item.dcCreator),
+    img: (item.edmPreview !== undefined) ? item.edmPreview[0] : notFoundImg,
   };
   return detail;
 }
