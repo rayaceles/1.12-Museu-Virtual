@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Quintessential&display=swap" rel="stylesheet">
   <script src="key.js"></script>
   <script src="fetchItem.js"></script>
   <script src="script.js" defer></script>
@@ -12,20 +14,26 @@
 </head>
 <body>
   <header class="header">
-    <b>Museu Virtual Cultura Trybe</b>
+    Museu Virtual Cultura Trybe<br>
+    <img id="logo" src="/images/tribo-async-se-coda.svg" alt="Turma Async se Coda">
   </header>
-  <nav id="navegator">
-    Quadros - Fotografias - Esculturas - Artefatos
-    <input id="art-search" value="mona lisa" placeholder = 'Encontre sua arte favorita'>
-    <!-- Aqui vai o quadro de busca -->
-    </input>
-    <button id="btn-finder">Buscar</button>
-
-  </nav>
-  <section class="wellcome">
-    Bem-vindo ao Museu Virtual Cultura Trybe, toda a cultura e diversidade ao redor do mundo em um único lugar!
+  <section id="nav-options">
+    <nav id="navegator">
+      <a ref="">Pinturas</a>
+      <a ref="">Fotografias</a>
+      <a ref="">Esculturas</a>
+      <a ref="">Artefatos</a>
+      <a ref="">Artistas</a>
+    </nav>
+    <section id="free-search">
+      <input id="art-search" value="mona lisa" placeholder = 'Encontre sua arte favorita'></input>
+      <button id="btn-finder">Buscar</button>
+    </section>
   </section>
 
+  <section class="wellcome">
+    Museu Virtual Cultura Trybe. Toda a cultura e diversidade ao redor do mundo em um único lugar!
+  </section>
   <section class="items">
     <section class="item-cards">
       <!-- <img src="https://api.europeana.eu/thumbnail/v2/url.json?uri=http%3A%2F%2Fmm.dimu.org%2Fimage%2F022uMWqCMnSh%3Fdimension%3D1200x1200&amp;type=IMAGE" class="image">
@@ -49,8 +57,9 @@
     </section>
 
   </section>
-  <footer class="footerr">
-    by Trybers: Leandro Bonfim - Rayane Celes - Sheila Arello
+  <hr>
+  <footer class="footer">
+    <p>by Trybers: </p><p>Leandro Bonfim - Rayane Celes - Sheila Arello</p>
   </footer>
 </body>
 </html>
