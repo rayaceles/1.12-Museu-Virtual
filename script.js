@@ -1,5 +1,3 @@
-const cardsSection = document.querySelector('.items');
-
 function createCustomElement(type, className = '', text = '') {
   const element = document.createElement(type);
   element.className = className;
@@ -25,7 +23,7 @@ function addDetailsToItem(element, value) {
 function createItemSection(dataObj) {
   const detail = getItemDetailList(dataObj);
   const container = createCustomElement('section', 'item-cards');
-  const image = createCustomImage(detail.img,'image');
+  const image = createCustomImage(detail.img, 'image');
   image.addEventListener('click', handleItemCardClick);
   container.appendChild(image);
   container.appendChild(createCustomElement('div', 'title', detail.title));
@@ -40,13 +38,13 @@ function createItemSection(dataObj) {
   return container
 }
 
-function creatorFilter(dcCreator){
+function creatorFilter(dcCreator) {
   const creator = (dcCreator !== undefined) ? dcCreator[0] : 'null'
   const regex = /^(https{0,1}:\/\/)/
-  if(regex.test(creator)){
+  if (regex.test(creator)) {
     const result = creator.split('/')
     console.log(result)
-    return result[result.length -1]
+    return result[result.length - 1]
   }
   return creator
 }
@@ -64,7 +62,8 @@ function getItemDetailList(item) {
   return detail;
 }
 
-async function loadArts () {
+async function loadArts() {
+  const cardsSection = document.querySelector('.items');
   const query = document.querySelector('#art-search');
   if (query.value) {
     cardsSection.innerHTML = '';
@@ -79,7 +78,7 @@ async function loadArts () {
 }
 
 // HELPERS
-const getElementOrClosest = (sectionClass, target) => 
+const getElementOrClosest = (sectionClass, target) =>
   target.classList.contains(sectionClass)
     ? target
     : target.closest(sectionClass);
@@ -88,16 +87,26 @@ const getElementOrClosest = (sectionClass, target) =>
 // HANDLERS
 
 const handleItemCardClick = ({ target }) => {
+  const cardsSection = document.querySelector('.items');
   const section = getElementOrClosest('.item-cards', target);
   cardsSection.innerHTML = '';
   cardsSection.appendChild(section);
 };
 
-window.onload = () => {
-  const button = document.querySelector('#btn-finder');
-  button.addEventListener('click', loadArts);
-  const input = document.querySelector('#art-search');
-  input.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') loadArts();
-  });
+
+
+if (typeof module !== 'undefined') {
+  module.exports = {
+    getItemDetailList,
+    creatorFilter,
+  }
+} else {
+  window.onload = () => {
+    const button = document.querySelector('#btn-finder');
+    button.addEventListener('click', loadArts);
+    const input = document.querySelector('#art-search');
+    input.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') loadArts();
+    });
+  }
 }
