@@ -224,6 +224,7 @@ a:hover {
   min-height: 80px;
   max-height: 160px;
   text-align: center;
+}
 
 @media screen and (max-width: 530px) {
   header {
