@@ -26,14 +26,13 @@ header {
   font-weight: 600;
 }
 
-@media screen and (max-width: 530px) {
-  header {
-    font-size: 2.5rem;
-  }
-}
-
 header img {
   max-width: 125px;
+}
+
+header img:hover {
+  transition: 1s;
+  max-width: 260px;
 }
 
 #nav-options {
@@ -102,10 +101,10 @@ a:hover {
   justify-content: center;
 }
 
+/* itens criados - cards aglomerados */
 .item-cards {
   background-color: rgb(221, 233, 221);
   max-width: 360px;
-  padding: 5px;
   margin: 5px;
   display: flex;
   flex-wrap: wrap;
@@ -113,23 +112,103 @@ a:hover {
   border-radius: 5px;
 }
 
-/* itens criados */
-.item-cards img {
+.image {
   background-color: grey;
-  max-width: 95vw;
+  max-width: 100%;
   max-height: 40vh;
   padding: 5px;
   border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-.item-cards li {
-  list-style: none;
+.title {
+  font-family: 'Quintessential', cursive, sans-serif;
+  color:purple;
+  font-weight: 600;
+  width: 100%;
+  padding-top: 5px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-.item-details {
+.abstract {
   justify-content: center;
   text-align:left;
+  min-height: 180px;
+  width: 100%;
   padding: 5px;
+  display:contents;
+}
+
+.abstract-info {
+  margin-left: 15px;
+  padding: 5px;
+  font-size: 14px;
+  display: inline;
+  width: 100%;
+}
+
+.abstract-info b {
+  padding-right: 5px;
+}
+
+/* itens criados - card detalhado */
+.item-cards-details {
+  background-color: rgb(221, 233, 221);
+  width: 100%;
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.image-detail {
+  background-color: grey;
+  max-width: 100%;
+  max-height: 40vh;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.title-detail {
+  font-family: 'Quintessential', cursive, sans-serif;
+  font-weight: 600;
+  width: 100%;
+  padding-top: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.details {
+  justify-content: center;
+  text-align:left;
+  min-height: 180px;
+  width: 100%;
+  padding: 5px;
+}
+
+.detail-info {
+  padding: 5px;
+}
+
+/* itens criados globais */
+.i {
+  align-items: center;
+  min-height: 40px;
+}
+
+.d {
+  align-items: center;
+  min-height: 40px;
+}
+
+.c {
+  align-items: center;
+  min-height: 40px;
 }
 
 .footer {
@@ -145,4 +224,13 @@ a:hover {
   min-height: 80px;
   max-height: 160px;
   text-align: center;
+
+@media screen and (max-width: 530px) {
+  header {
+    font-size: 2.5rem;
+  }
+
+  .wellcome {
+    font-size: 1.2rem;
+  }
 }
