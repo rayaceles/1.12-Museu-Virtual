@@ -34,9 +34,6 @@ function createItemSection(item) {
   const container = createCustomElement('section', 'item-cards');
   const image = createCustomImage(detail.img)
   container.appendChild(image);
-  // const div = createCustomElement('div', 'detail_container')
-  // const div = createCustomElement('div', 'container')
-  // container.appendChild(div)
   const details = addDetailsToItem(detail);
   container.appendChild(details);
   return container
@@ -60,7 +57,6 @@ async function loadArts () {
     const section = document.querySelector('.items');
     section.innerHTML = '';
     const data = await fetchItem(query.value);
-    console.log(data);
     data.forEach((item) => {
       section.appendChild(createItemSection(item));
     });
