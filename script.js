@@ -42,9 +42,9 @@ function creatorFilter(dcCreator) {
   const creator = (dcCreator !== undefined) ? dcCreator[0] : 'null'
   const regex = /^(https{0,1}:\/\/)/
   if (regex.test(creator)) {
-    const result = creator.split('/')
-    console.log(result)
-    return result[result.length - 1]
+    let result = creator.split('/');
+    result = result[result.length -1].split('Category:');
+    return result[result.length - 1];
   }
   return creator
 }
