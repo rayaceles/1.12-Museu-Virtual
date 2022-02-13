@@ -1,5 +1,26 @@
 {
   "dependencies": {
     "node-fetch": "^2.6.7"
+  },
+  "name": "cultura--tryber",
+  "description": "",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leandroswq/cultura--tryber.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leandroswq/cultura--tryber/issues"
+  },
+  "homepage": "https://github.com/Leandroswq/cultura--tryber#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }
