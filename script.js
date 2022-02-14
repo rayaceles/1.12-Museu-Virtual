@@ -15,6 +15,15 @@ function createCustomImage(url, className = '') {
   return image
 }
 
+function trybe(section) {
+  section.innerHTML = '';
+  const div = createCustomElement('div', 'trybe')
+  div.appendChild(createCustomImage('images/sumo.png', 'trybe-img'));
+  div.appendChild(createCustomImage('images/ana.jpeg', 'trybe-img'));
+  div.appendChild(createCustomImage('images/noel.png', 'trybe-img'));
+  section.appendChild(div)
+}
+
 function addDetailsToItem(element, value) {
   const text = `<b>${element[0].toUpperCase()}${element.slice(1)}: </b>${value}`;
   const classe = `${element} abstract-info`;
@@ -23,14 +32,16 @@ function addDetailsToItem(element, value) {
   return div;
 }
 
-function createItemSection(cardItems, index) {
+function createItemCard(cardItems, index) {
   const detail = getItemDetailList(cardItems);
   const container = createCustomElement('section', 'item-cards');
   container.id = index;
+  const sectionImgCard = createCustomElement('section', 'img-card');
   const image = createCustomImage(detail.img,'image');
   image.addEventListener('click', handleItemCardClick);
-  container.appendChild(image);
-  container.appendChild(createCustomElement('div', 'title', detail.title.substring(0, 30)));
+  container.appendChild(sectionImgCard);
+  sectionImgCard.appendChild(image);
+  sectionImgCard.appendChild(createCustomElement('div', 'title', detail.title.substring(0, 30)));
   //Details
   const detailContainer = container.appendChild(createCustomElement('section', 'abstract'));
   const keys = Object.keys(detail);
@@ -68,15 +79,6 @@ function getItemDetailList(item) {
   return detail;
 }
 
-function trybe(section) {
-  section.innerHTML = '';
-  const div = createCustomElement('div', 'trybe')
-  div.appendChild(createCustomImage('images/sumo.png', 'trybe-img'));
-  div.appendChild(createCustomImage('images/ana.jpeg', 'trybe-img'));
-  div.appendChild(createCustomImage('images/noel.png', 'trybe-img'));
-  section.appendChild(div)
-}
-
 async function loadArts () {
   const query = document.querySelector('#art-search');
   if (query.value.toUpperCase() === 'TRYBE') {
@@ -92,7 +94,7 @@ async function loadArts () {
     cardsItems = data;
     console.log(cardsItems);
     for (let index=0; index < cardsItems.length; index += 1) {
-      cardsSection.appendChild(createItemSection(cardsItems[index], index));
+      cardsSection.appendChild(createItemCard(cardsItems[index], index));
     }
   }
   query.value = '';
@@ -102,7 +104,7 @@ function returnMainPage() {
   cardsSection.innerHTML = '';
   console.log(cardsItems);
   for (let index=0; index < cardsItems.length; index += 1) {
-    cardsSection.appendChild(createItemSection(cardsItems[index], index));
+    cardsSection.appendChild(createItemCard(cardsItems[index], index));
   }
 }
 
