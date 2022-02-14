@@ -97,7 +97,8 @@ function getItemDetailList(item) {
   return detail;
 }
 
-async function newSearch(e) {
+
+async function newSearch (e) {
   const query = e.target.innerText.split(':')[1];
   console.log(query);
   const data = await fetchItem(query);
@@ -105,13 +106,15 @@ async function newSearch(e) {
   if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
   cardsItems = data;
   console.log(cardsItems);
-  for (let index = 0; index < cardsItems.length; index += 1) {
+
+  for (let index=0; index < cardsItems.length; index += 1) {
     cardsSection.appendChild(createItemCard(cardsItems[index], index));
   }
 }
 
 
-async function loadArts() {
+
+async function loadArts () {
   document.querySelector('.wellcome').innerHTML = 'Museu Virtual Cultura Trybe. Toda a cultura e diversidade ao redor do mundo em um único lugar!';
   const query = document.querySelector('#art-search');
   const search = query.value;
@@ -123,6 +126,7 @@ async function loadArts() {
   if (search) {
     cardsSection.innerHTML = '';
     const data = await fetchItem(search);
+
     if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
     cardsItems = data;
     console.log(cardsItems);
