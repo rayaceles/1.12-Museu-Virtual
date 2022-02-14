@@ -15,6 +15,14 @@ function createCustomImage(url, className = '') {
   return image
 }
 
+function barabam (boolBarabam) {
+  if (boolBarabam) {
+    cardsSection.innerText = 'Barabam!!!';
+  } else {
+    cardsSection.innerText = '';
+  }
+}
+
 const dataTrybers = (div, imgName, imgText) => {
   const img = div.appendChild(createCustomElement('div', 'trybe-img'));
   img.appendChild(createCustomImage(imgName));
@@ -44,8 +52,8 @@ function addDetailsToItem(element, value) {
   const div = createCustomElement('div', classe, text);
   if (element === 'institution') {
     div.addEventListener('click', newSearch);
-  } else {
-    div.addEventListener('click', handleItemCardClick);
+  // } else {
+  //   div.addEventListener('click', handleItemCardClick);
   }
   return div;
 }
@@ -65,8 +73,6 @@ function createItemCard(cardItems, index) {
   const keys = Object.keys(detail);
   keys.forEach((element) => {
     if (element !== 'title' && element !== 'img') {
-      //if (element !== 'description') detail[element] = detail[element].substring(0, 80);
-      //detailContainer.appendChild(addDetailsToItem(element, detail[element]));
       detailContainer.appendChild(addDetailsToItem(element, detail[element].substring(0, 30)));
     }
   });
@@ -116,17 +122,17 @@ async function newSearch (e) {
 
 async function loadArts () {
   document.querySelector('.wellcome').innerHTML = 'Museu Virtual Cultura Trybe. Toda a cultura e diversidade ao redor do mundo em um único lugar!';
+  barabam(true);
   const query = document.querySelector('#art-search');
   const search = query.value;
   query.value = '';
   if (search.toUpperCase() === 'TRYBE') {
     trybe(cardsSection);
-    return
+    return;
   }
   if (search) {
-    cardsSection.innerHTML = '';
     const data = await fetchItem(search);
-
+    cardsSection.innerHTML = '';
     if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
     cardsItems = data;
     console.log(cardsItems);
@@ -157,6 +163,9 @@ function createDetailItemSection(data) {
       const text = `<b>${element[0].toUpperCase()}${element.slice(1)}: </b>${detail[element]}`;
       const classe = `${element} detail-info`;
       const div = createCustomElement('div', classe, text);
+      if (element === 'institution') {
+        div.addEventListener('click', newSearch);
+      }  
       detailContainer.appendChild(div);
     }
   });
