@@ -196,16 +196,6 @@ a:hover {
 }
 
 /* itens criados globais */
-/* .institution {
-  align-items: center;
-  min-height: 40px;
-}
-
-.description {
-  align-items: center;
-  min-height: 40px;
-} */
-
 .country, .creator, .institution, .description {
   align-items: center;
   min-height: 20px;
@@ -226,6 +216,15 @@ a:hover {
   text-align: center;
 }
 
+.trybe{
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+.trybe-img{
+  width: 20%;
+}
+
 @media screen and (max-width: 530px) {
   header {
     font-size: 2.5rem;
@@ -235,3 +234,4 @@ a:hover {
     font-size: 1.2rem;
   }
 }
+

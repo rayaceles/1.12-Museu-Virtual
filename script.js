@@ -49,7 +49,7 @@ function creatorFilter(dcCreator) {
   const regex = /^(https{0,1}:\/\/)/
   if (regex.test(creator)) {
     let result = creator.split('/');
-    result = result[result.length -1].split('Category:');
+    result = result[result.length - 1].split('Category:');
     return result[result.length - 1];
   }
   return creator
@@ -68,8 +68,22 @@ function getItemDetailList(item) {
   return detail;
 }
 
+function trybe(section) {
+  section.innerHTML = '';
+  const div = createCustomElement('div', 'trybe')
+  div.appendChild(createCustomImage('images/sumo.png', 'trybe-img'));
+  div.appendChild(createCustomImage('images/ana.jpeg', 'trybe-img'));
+  div.appendChild(createCustomImage('images/noel.png', 'trybe-img'));
+  section.appendChild(div)
+}
+
 async function loadArts () {
   const query = document.querySelector('#art-search');
+  if (query.value.toUpperCase() === 'TRYBE') {
+    trybe(cardsSection);
+    query.value = '';
+    return
+  }
   if (query.value) {
     cardsSection.innerHTML = '';
     const data = await fetchItem(query.value);
