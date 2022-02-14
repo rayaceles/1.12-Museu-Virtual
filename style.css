@@ -108,6 +108,15 @@ a:hover {
   justify-content: center;
 }
 
+/* BARABAM! - Antes das buscas */
+
+.barabam {
+  font-family: 'Quintessential', cursive, sans-serif;
+  font-size: 12rem;
+  color: rgb(46, 1, 46); 
+  text-shadow: black 0.1em 0.1em 0.2em ;
+}
+
 /* itens criados - cards aglomerados */
 .item-cards {
   background-color: rgb(221, 233, 221);
@@ -241,6 +250,8 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-content: center;
+  width: 80%;
 
 }
 .trybe-img img {
@@ -278,6 +289,12 @@ a:hover {
   text-align: center;
 }
 
+@media screen and (max-width: 770px) {
+  .barabam {
+    font-size: 8rem;
+  }
+}
+
 @media screen and (max-width: 530px) {
   header {
     font-size: 2.5rem;
@@ -285,5 +302,9 @@ a:hover {
 
   .wellcome {
     font-size: 1.2rem;
+  }
+
+  .barabam {
+    font-size: 4rem;
   }
 }
