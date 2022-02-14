@@ -55,7 +55,7 @@ function createItemCard(cardItems, index) {
   const container = createCustomElement('section', 'item-cards');
   container.id = index;
   const sectionImgCard = createCustomElement('section', 'img-card');
-  const image = createCustomImage(detail.img,'image');
+  const image = createCustomImage(detail.img, 'image');
   image.addEventListener('click', handleItemCardClick);
   container.appendChild(sectionImgCard);
   sectionImgCard.appendChild(createCustomElement('div', 'title', detail.title.substring(0, 30)));
@@ -97,6 +97,7 @@ function getItemDetailList(item) {
   return detail;
 }
 
+
 async function newSearch (e) {
   const query = e.target.innerText.split(':')[1];
   console.log(query);
@@ -105,37 +106,40 @@ async function newSearch (e) {
   if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
   cardsItems = data;
   console.log(cardsItems);
+
   for (let index=0; index < cardsItems.length; index += 1) {
     cardsSection.appendChild(createItemCard(cardsItems[index], index));
   }
 }
 
 
+
 async function loadArts () {
   document.querySelector('.wellcome').innerHTML = 'Museu Virtual Cultura Trybe. Toda a cultura e diversidade ao redor do mundo em um único lugar!';
   const query = document.querySelector('#art-search');
-  if (query.value.toUpperCase() === 'TRYBE') {
+  const search = query.value;
+  query.value = '';
+  if (search.toUpperCase() === 'TRYBE') {
     trybe(cardsSection);
-    query.value = '';
     return
   }
-  if (query.value) {
+  if (search) {
     cardsSection.innerHTML = '';
-    const data = await fetchItem(query.value);
+    const data = await fetchItem(search);
+
     if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
     cardsItems = data;
     console.log(cardsItems);
-    for (let index=0; index < cardsItems.length; index += 1) {
+    for (let index = 0; index < cardsItems.length; index += 1) {
       cardsSection.appendChild(createItemCard(cardsItems[index], index));
     }
   }
-  query.value = '';
 }
 
 function returnMainPage() {
   cardsSection.innerHTML = '';
   console.log(cardsItems);
-  for (let index=0; index < cardsItems.length; index += 1) {
+  for (let index = 0; index < cardsItems.length; index += 1) {
     cardsSection.appendChild(createItemCard(cardsItems[index], index));
   }
 }
@@ -143,7 +147,7 @@ function returnMainPage() {
 function createDetailItemSection(data) {
   const detail = getItemDetailList(data);
   const container = createCustomElement('section', 'item-cards-details');
-  const image = createCustomImage(detail.img,'image');
+  const image = createCustomImage(detail.img, 'image');
   container.appendChild(image);
   container.appendChild(createCustomElement('div', 'title-detail', detail.title));
   const detailContainer = container.appendChild(createCustomElement('section', 'details'));
@@ -162,7 +166,7 @@ function createDetailItemSection(data) {
   return container
 }
 
-const getElementOrClosest = (sectionClass, target) => 
+const getElementOrClosest = (sectionClass, target) =>
   target.classList.contains(sectionClass)
     ? target
     : target.closest(sectionClass);
@@ -174,6 +178,18 @@ const handleItemCardClick = ({ target }) => {
   cardsSection.appendChild(createDetailItemSection(data));
 };
 
+const handleNavegaotrs = () => {
+  const navegator = document.querySelector('#navegator').children;
+  const nav = Array.from(navegator);
+  nav.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      const query = document.querySelector('#art-search');
+      query.value = event.target.id;
+      loadArts();
+    })
+  })
+}
+
 window.onload = () => {
   const button = document.querySelector('#btn-finder');
   button.addEventListener('click', loadArts);
@@ -181,4 +197,5 @@ window.onload = () => {
   input.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') loadArts();
   });
+  handleNavegaotrs();
 }
