@@ -17,18 +17,36 @@ function createCustomImage(url, className = '') {
 
 function trybe(section) {
   section.innerHTML = '';
-  const div = createCustomElement('div', 'trybe')
-  div.appendChild(createCustomImage('images/sumo.png', 'trybe-img'));
-  div.appendChild(createCustomImage('images/ana.jpeg', 'trybe-img'));
-  div.appendChild(createCustomImage('images/noel.png', 'trybe-img'));
-  section.appendChild(div)
+  const div = createCustomElement('div', 'trybe');
+  const firstImg = div.appendChild(createCustomElement('div', 'trybe-img'));
+  firstImg.appendChild(createCustomImage('images/sumo.png'));
+  firstImg.appendChild(createCustomElement('p', 'text-name', 'Alexandre Sumoyama - Habemus'));
+  const SecImg = div.appendChild(createCustomElement('div', 'trybe-img'));
+  SecImg.appendChild(createCustomImage('images/ana.jpeg'));
+  SecImg.appendChild(createCustomElement('p', 'text-name', 'Ana Laura Berger - Const a'));
+  const ThirthImg = div.appendChild(createCustomElement('div', 'trybe-img'));
+  ThirthImg.appendChild(createCustomImage('images/noel.png'));
+  ThirthImg.appendChild(createCustomElement('p', 'text-name', 'André Noel - Barabam'));
+  section.appendChild(div);
+  document.querySelector('.wellcome').innerHTML = 'Vamos sentir saudades !!!';
+}
+
+function message(section, msg) {
+  section.innerHTML = '';
+  const div = createCustomElement('div', 'message');
+  div.innerHTML = msg;
+  section.appendChild(div);
 }
 
 function addDetailsToItem(element, value) {
   const text = `<b>${element[0].toUpperCase()}${element.slice(1)}: </b>${value}`;
   const classe = `${element} abstract-info`;
   const div = createCustomElement('div', classe, text);
-  div.addEventListener('click', handleItemCardClick);
+  if (element === 'institution') {
+    div.addEventListener('click', newSearch);
+  } else {
+    div.addEventListener('click', handleItemCardClick);
+  }
   return div;
 }
 
@@ -40,8 +58,8 @@ function createItemCard(cardItems, index) {
   const image = createCustomImage(detail.img,'image');
   image.addEventListener('click', handleItemCardClick);
   container.appendChild(sectionImgCard);
-  sectionImgCard.appendChild(image);
   sectionImgCard.appendChild(createCustomElement('div', 'title', detail.title.substring(0, 30)));
+  sectionImgCard.appendChild(image);
   //Details
   const detailContainer = container.appendChild(createCustomElement('section', 'abstract'));
   const keys = Object.keys(detail);
@@ -56,7 +74,7 @@ function createItemCard(cardItems, index) {
 }
 
 function creatorFilter(dcCreator) {
-  const creator = (dcCreator !== undefined) ? dcCreator[0] : 'null'
+  const creator = (dcCreator !== undefined) ? dcCreator[0] : '';
   const regex = /^(https{0,1}:\/\/)/
   if (regex.test(creator)) {
     let result = creator.split('/');
@@ -79,7 +97,22 @@ function getItemDetailList(item) {
   return detail;
 }
 
+async function newSearch (e) {
+  const query = e.target.innerText.split(':')[1];
+  console.log(query);
+  const data = await fetchItem(query);
+  cardsSection.innerHTML = '';
+  if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
+  cardsItems = data;
+  console.log(cardsItems);
+  for (let index=0; index < cardsItems.length; index += 1) {
+    cardsSection.appendChild(createItemCard(cardsItems[index], index));
+  }
+}
+
+
 async function loadArts () {
+  document.querySelector('.wellcome').innerHTML = 'Museu Virtual Cultura Trybe. Toda a cultura e diversidade ao redor do mundo em um único lugar!';
   const query = document.querySelector('#art-search');
   if (query.value.toUpperCase() === 'TRYBE') {
     trybe(cardsSection);
@@ -89,8 +122,7 @@ async function loadArts () {
   if (query.value) {
     cardsSection.innerHTML = '';
     const data = await fetchItem(query.value);
-    // trocar por texto na pagina // Ray
-    if (data.length === 0) alert("Nenhum ítem encontrado");
+    if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
     cardsItems = data;
     console.log(cardsItems);
     for (let index=0; index < cardsItems.length; index += 1) {
