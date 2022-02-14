@@ -9,7 +9,6 @@ async function fetchSimulator(url) {
   if (validURL !== url) {
     throw new console.error('Item invalido');
   }
-  console.log(data)
   return {json: () => data}
 }
 
