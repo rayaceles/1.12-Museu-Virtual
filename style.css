@@ -196,19 +196,19 @@ a:hover {
 }
 
 /* itens criados globais */
-.i {
+/* .institution {
   align-items: center;
   min-height: 40px;
 }
 
-.d {
+.description {
   align-items: center;
   min-height: 40px;
-}
+} */
 
-.c {
+.country, .creator, .institution, .description {
   align-items: center;
-  min-height: 40px;
+  min-height: 20px;
 }
 
 .footer {
