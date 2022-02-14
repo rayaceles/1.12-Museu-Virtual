@@ -15,18 +15,18 @@ function createCustomImage(url, className = '') {
   return image
 }
 
+const dataTrybers = (div, imgName, imgText) => {
+  const img = div.appendChild(createCustomElement('div', 'trybe-img'));
+  img.appendChild(createCustomImage(imgName));
+  img.appendChild(createCustomElement('p', 'text-name', imgText));
+}
+
 function trybe(section) {
   section.innerHTML = '';
   const div = createCustomElement('div', 'trybe');
-  const firstImg = div.appendChild(createCustomElement('div', 'trybe-img'));
-  firstImg.appendChild(createCustomImage('images/sumo.png'));
-  firstImg.appendChild(createCustomElement('p', 'text-name', 'Alexandre Sumoyama - Habemus'));
-  const SecImg = div.appendChild(createCustomElement('div', 'trybe-img'));
-  SecImg.appendChild(createCustomImage('images/ana.jpeg'));
-  SecImg.appendChild(createCustomElement('p', 'text-name', 'Ana Laura Berger - Const a'));
-  const ThirthImg = div.appendChild(createCustomElement('div', 'trybe-img'));
-  ThirthImg.appendChild(createCustomImage('images/noel.png'));
-  ThirthImg.appendChild(createCustomElement('p', 'text-name', 'André Noel - Barabam'));
+  dataTrybers(div, 'images/sumo.png', 'Alexandre Sumoyama - Habemus');
+  dataTrybers(div, 'images/ana.jpeg', 'Ana Laura Berger - Const a');
+  dataTrybers(div, 'images/noel.png', 'André Noel - Barabam');
   section.appendChild(div);
   document.querySelector('.wellcome').innerHTML = 'Vamos sentir saudades !!!';
 }
