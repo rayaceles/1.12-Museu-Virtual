@@ -146,3 +146,12 @@ a:hover {
   max-height: 160px;
   text-align: center;
 }
+
+.trybe{
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+.trybe-img{
+  width: 20%;
+}
