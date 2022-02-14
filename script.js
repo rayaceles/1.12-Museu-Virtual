@@ -16,10 +16,11 @@ function createCustomImage(url, className = '') {
 }
 
 function barabam (boolBarabam) {
+  
   if (boolBarabam) {
-    cardsSection.innerText = 'Barabam!!!';
+    cardsSection.appendChild(createCustomElement('section', 'barabam', 'Barabam!!!'));
   } else {
-    cardsSection.innerText = '';
+    // cardsSection.innerText = '';
   }
 }
 
