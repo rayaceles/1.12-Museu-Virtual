@@ -4,6 +4,10 @@ Esse foi meu primeiro projeto em grupo na Trybe, projeto Bônus de tema livre, a
 
 Projeto de encerramento do módulo de Fundamentos, muita coisa avançou desde então!
 
+Obs.: Projeto criado em um único arquivo .js - Nesse ponto ainda não havia sido abordado a parte e estrutura e boas práticas.
+
+Os projeto será revisado.
+
 ---
 
 ## SUMÁRIO

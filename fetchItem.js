@@ -6,7 +6,6 @@ function url(item) {
   return result
 }
 
-
 async function fetchItem(item) {
   const result = await fetch(url(item))
   const data = await result.json()

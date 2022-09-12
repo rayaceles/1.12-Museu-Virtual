@@ -1,4 +1,4 @@
-const cardsSection = document.querySelector('.items');
+const cardsSection = this.document.querySelector('.items');
 let cardsItems;
 
 function createCustomElement(type, className = '', text = '') {
@@ -78,13 +78,13 @@ function createItemCard(cardItems, index) {
 
 function creatorFilter(dcCreator) {
   const creator = (dcCreator !== undefined) ? dcCreator[0] : '';
-  const regex = /^(https{0,1}:\/\/)/
+  const regex = /^(https{0,1}:\/\/)/;
   if (regex.test(creator)) {
     let result = creator.split('/');
     result = result[result.length - 1].split('Category:');
     return result[result.length - 1];
   }
-  return creator
+  return creator;
 }
 
 function getItemDetailList(item) {
@@ -121,7 +121,6 @@ async function firstLoad () {
     cardsSection.appendChild(createItemCard(cardsItems[index], index));
   }
 }
-
 firstLoad();
 
 async function loadArts () {

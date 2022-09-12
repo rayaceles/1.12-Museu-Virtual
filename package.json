@@ -2,7 +2,7 @@
   "dependencies": {
     "node-fetch": "^2.6.7"
   },
-  "name": "cultura--tryber",
+  "name": "museu-virtual",
   "description": "",
   "version": "1.0.0",
   "main": "script.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Leandroswq/cultura--tryber.git"
+    "url": "git+https://github.com/rayaceles/1.12-Museu-Virtual.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Leandroswq/cultura--tryber/issues"
+    "url": "https://github.com/rayaceles/1.12-Museu-Virtual/issues"
   },
-  "homepage": "https://github.com/Leandroswq/cultura--tryber#readme",
+  "homepage": "https://github.com/rayaceles/1.12-Museu-Virtual#readme",
   "devDependencies": {
     "jest": "^27.5.1"
   }
