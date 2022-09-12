@@ -16,11 +16,8 @@ function createCustomImage(url, className = '') {
 }
 
 function barabam (boolBarabam) {
-  
   if (boolBarabam) {
     cardsSection.appendChild(createCustomElement('section', 'barabam', 'Barabam!!!'));
-  } else {
-    // cardsSection.innerText = '';
   }
 }
 
@@ -37,7 +34,8 @@ function trybe(section) {
   dataTrybers(div, 'images/ana.jpeg', 'Ana Laura Berger - Const a');
   dataTrybers(div, 'images/noel.png', 'André Noel - Barabam');
   section.appendChild(div);
-  document.querySelector('.wellcome').innerHTML = 'Vamos sentir saudades !!!';
+  document.querySelector('.wellcome')
+    .innerHTML = 'Nossa homenagem carinhosa à equipe responsável por essa etapa de Fundamentos!!!';
 }
 
 function message(section, msg) {
@@ -53,8 +51,6 @@ function addDetailsToItem(element, value) {
   const div = createCustomElement('div', classe, text);
   if (element === 'institution') {
     div.addEventListener('click', newSearch);
-  // } else {
-  //   div.addEventListener('click', handleItemCardClick);
   }
   return div;
 }
@@ -104,25 +100,33 @@ function getItemDetailList(item) {
   return detail;
 }
 
-
 async function newSearch (e) {
   const query = e.target.innerText.split(':')[1];
-  console.log(query);
   const data = await fetchItem(query);
   cardsSection.innerHTML = '';
   if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
   cardsItems = data;
-  console.log(cardsItems);
-
   for (let index=0; index < cardsItems.length; index += 1) {
     cardsSection.appendChild(createItemCard(cardsItems[index], index));
   }
 }
+async function firstLoad () {
+  document.querySelector('.wellcome')
+    .innerHTML = 'Museu Virtual Cultura Trybe. Toda a cultura e diversidade ao redor do mundo em um único lugar!';
+  const search = 'Brasil';
+  const data = await fetchItem(search);
+  if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
+  cardsItems = data;
+  for (let index = 0; index < cardsItems.length; index += 1) {
+    cardsSection.appendChild(createItemCard(cardsItems[index], index));
+  }
+}
 
-
+firstLoad();
 
 async function loadArts () {
-  document.querySelector('.wellcome').innerHTML = 'Museu Virtual Cultura Trybe. Toda a cultura e diversidade ao redor do mundo em um único lugar!';
+  document.querySelector('.wellcome')
+    .innerHTML = 'Museu Virtual Cultura Trybe. Toda a cultura e diversidade ao redor do mundo em um único lugar!';
   barabam(true);
   const query = document.querySelector('#art-search');
   const search = query.value;
@@ -136,7 +140,6 @@ async function loadArts () {
     cardsSection.innerHTML = '';
     if (data.length === 0) message(cardsSection, 'Nenhum ítem encontrado!');
     cardsItems = data;
-    console.log(cardsItems);
     for (let index = 0; index < cardsItems.length; index += 1) {
       cardsSection.appendChild(createItemCard(cardsItems[index], index));
     }
@@ -145,7 +148,6 @@ async function loadArts () {
 
 function returnMainPage() {
   cardsSection.innerHTML = '';
-  console.log(cardsItems);
   for (let index = 0; index < cardsItems.length; index += 1) {
     cardsSection.appendChild(createItemCard(cardsItems[index], index));
   }
